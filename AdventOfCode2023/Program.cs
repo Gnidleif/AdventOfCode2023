@@ -1,4 +1,4 @@
-﻿using AdventOfCode2023;
+﻿using AdventOfCode2023.Days;
 using AdventOfCode2023.Days._2023;
 
 var example = true;

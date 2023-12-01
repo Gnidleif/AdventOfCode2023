@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2023
+﻿namespace AdventOfCode2023.Days
 {
   public abstract class DayBase
   {
