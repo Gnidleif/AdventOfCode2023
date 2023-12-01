@@ -10,8 +10,9 @@
       Year = year;
       Day = day;
     }
-
-    public abstract int Solution1(bool example = false);
-    public abstract int Solution2(bool example = false);
+    public abstract Task<int> Solution1(bool example);
+    public abstract Task<int> Solution2(bool example);
+    protected async Task<List<string>> GetInput(int? example)
+      => (await Tools.ReadInput(Year, Day, example)).Split(new string[] { "\r", "\n" }, StringSplitOptions.TrimEntries).ToList();
   }
 }

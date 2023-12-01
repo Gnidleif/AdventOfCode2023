@@ -7,13 +7,17 @@ namespace AdventOfCode2023
     private static Uri AoCUrl { get; } = new Uri("https://adventofcode.com/");
     private static string ProjectDirectory => Directory.GetParent(path: Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? throw new FileNotFoundException();
 
-    public static async Task<string> ReadInput(int year, int day)
+    public static async Task<string> ReadInput(int year, int day, int? example)
     {
       var yearAsString = year.ToString();
-      var filePath = Path.Combine(ProjectDirectory, "Inputs", yearAsString, $"{day}.txt");
+      var filePath = Path.Combine(ProjectDirectory, "Inputs", yearAsString, string.Format("{0}{1}.txt", day, example.HasValue ? $"_{example}" : string.Empty));
 
       if (!File.Exists(filePath))
       {
+        if (example.HasValue)
+        {
+          throw new FileNotFoundException(filePath);
+        }
         var dirPath = Path.GetDirectoryName(filePath) ?? throw new FileNotFoundException();
         if (!Directory.Exists(dirPath))
         {
