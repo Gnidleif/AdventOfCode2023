@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode2023.Days._2023
 {
-  public class Day1 : DayBase
+  internal class Day1 : DayBase
   {
     public Day1(int year, int day) : base(year, day)
     {
@@ -42,12 +42,12 @@ namespace AdventOfCode2023.Days._2023
         { "nine", "9" },
       };
 
-      var stringBuilder = new StringBuilder(@"\d");
+      var sb = new StringBuilder(@"\d");
       foreach (var key in numberDict.Keys)
       {
-        stringBuilder.Append($"|{key}");
+        sb.Append($"|{key}");
       }
-      var rgxString = stringBuilder.ToString();
+      var rgxString = sb.ToString();
 
       return input.Select(line =>
       {
